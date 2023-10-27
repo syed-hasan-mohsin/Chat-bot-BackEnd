@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="header">
+        <h1>Chatbot Application</h1>
+    </div>
+    <div class="upload-section">
+        <p-fileUpload name="files" url="http://127.0.0.1:5000/api/upload" (onUpload)="onUpload($event)" [multiple]="true" accept="application/pdf">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+    </div>
+    <div *ngIf="uploadedFiles.length" class="input-container">
+        <textarea pInputTextarea [(ngModel)]="question" placeholder="Type your question here..." rows="5" cols="30"></textarea>
+        <button pButton label="Ask" (click)="askQuestion()" class="ask-button"></button>
+    </div>
+    <div *ngIf="answer" class="output-container">
+        <p-card header="Response" class="response-card">
+            <p>{{ answer }}</p>
+        </p-card>
+    </div>
+</div>
