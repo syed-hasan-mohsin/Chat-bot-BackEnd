@@ -1,0 +1,6 @@
+langchain 
+flask 
+openai 
+chromadb 
+flask-cors 
+tiktoken
